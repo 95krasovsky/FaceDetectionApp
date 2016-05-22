@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="Z3C-xg-ZTL">
+            <objects>
+                <viewController id="pJB-Z7-vLX" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="T9z-pE-nZz"/>
+                        <viewControllerLayoutGuide type="bottom" id="hTk-DD-C0X"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8yL-eH-lZC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qEt-BW-xUs">
+                                <rect key="frame" x="0.0" y="-5" width="600" height="605"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="lxE-iV-pS4">
+                                        <rect key="frame" x="30" y="30" width="540" height="545"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="lxE-iV-pS4" firstAttribute="leading" secondItem="qEt-BW-xUs" secondAttribute="leading" constant="30" id="5Fm-JB-Ic6"/>
+                                    <constraint firstAttribute="trailing" secondItem="lxE-iV-pS4" secondAttribute="trailing" constant="30" id="AFT-rH-k3d"/>
+                                    <constraint firstAttribute="bottom" secondItem="lxE-iV-pS4" secondAttribute="bottom" constant="30" id="I1d-YC-pOq"/>
+                                    <constraint firstItem="lxE-iV-pS4" firstAttribute="top" secondItem="qEt-BW-xUs" secondAttribute="top" constant="30" id="zPN-92-99x"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="qEt-BW-xUs" firstAttribute="bottom" secondItem="hTk-DD-C0X" secondAttribute="top" id="MjY-SU-vg8"/>
+                            <constraint firstAttribute="trailing" secondItem="qEt-BW-xUs" secondAttribute="trailing" id="g1p-ad-jVH"/>
+                            <constraint firstItem="qEt-BW-xUs" firstAttribute="top" secondItem="8yL-eH-lZC" secondAttribute="topMargin" constant="-5" id="guL-sk-gba"/>
+                            <constraint firstItem="qEt-BW-xUs" firstAttribute="leading" secondItem="8yL-eH-lZC" secondAttribute="leading" id="naP-g5-gbf"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Kll-lO-49U" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="586" y="976"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xpp-CL-fii">
+                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FOz-2l-iWC">
+                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WGR-Te-Wct">
+                                        <rect key="frame" x="235" y="210" width="130" height="130"/>
+                                        <color key="backgroundColor" red="0.0" green="0.66274509800000003" blue="0.30980392159999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="130" id="BvB-SP-BpR"/>
+                                            <constraint firstAttribute="height" constant="130" id="ZLb-8S-0Zg"/>
+                                        </constraints>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="ZeG-F0-c9S">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="580"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="WGR-Te-Wct" firstAttribute="centerY" secondItem="FOz-2l-iWC" secondAttribute="centerY" constant="-15" id="0DP-nz-4eY"/>
+                                    <constraint firstAttribute="trailing" secondItem="ZeG-F0-c9S" secondAttribute="trailing" id="7vI-bD-vhy"/>
+                                    <constraint firstAttribute="bottom" secondItem="ZeG-F0-c9S" secondAttribute="bottom" id="PFH-wb-t4n"/>
+                                    <constraint firstItem="ZeG-F0-c9S" firstAttribute="leading" secondItem="FOz-2l-iWC" secondAttribute="leading" id="Tra-Na-buf"/>
+                                    <constraint firstItem="ZeG-F0-c9S" firstAttribute="top" secondItem="FOz-2l-iWC" secondAttribute="top" id="ewd-zt-RMK"/>
+                                    <constraint firstItem="WGR-Te-Wct" firstAttribute="centerX" secondItem="FOz-2l-iWC" secondAttribute="centerX" id="lfL-DV-8Wb"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Xpp-CL-fii" secondAttribute="bottom" id="3MQ-o0-zmm"/>
+                            <constraint firstAttribute="trailing" secondItem="Xpp-CL-fii" secondAttribute="trailing" id="4tI-WZ-j4d"/>
+                            <constraint firstItem="Xpp-CL-fii" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="6s2-Fe-I5M"/>
+                            <constraint firstItem="Xpp-CL-fii" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="20" id="Bvy-Qy-423"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="FOz-2l-iWC" secondAttribute="bottom" id="Rir-xv-QfS"/>
+                            <constraint firstItem="FOz-2l-iWC" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="oYR-Kh-ObH"/>
+                            <constraint firstAttribute="trailing" secondItem="FOz-2l-iWC" secondAttribute="trailing" id="qCD-Df-ZZB"/>
+                            <constraint firstItem="Xpp-CL-fii" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="r2u-kO-ecd"/>
+                            <constraint firstItem="FOz-2l-iWC" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="xuv-pq-nrX"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="Bvy-Qy-423"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="faceImageView" destination="WGR-Te-Wct" id="GTp-D1-e4U"/>
+                        <outlet property="previewView" destination="Xpp-CL-fii" id="9Mr-Uo-xrV"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="background" width="544" height="422"/>
+    </resources>
+</document>
