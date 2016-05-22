@@ -34,7 +34,7 @@ static CGFloat DegreesToRadians(CGFloat degrees) {return degrees * M_PI / 180;};
 	
 	AVCaptureSession *session = [[AVCaptureSession alloc] init];
 	if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone){
-	    [session setSessionPreset:AVCaptureSessionPresetHigh];
+	    [session setSessionPreset:AVCaptureSessionPresetMedium];
 	} else {
 	    [session setSessionPreset:AVCaptureSessionPresetPhoto];
 	}
@@ -101,7 +101,7 @@ static CGFloat DegreesToRadians(CGFloat degrees) {return degrees * M_PI / 180;};
         [self.previewLayer setFrame:[rootLayer bounds]];
       //  self.previewLayer.connection.videoOrientation = (AVCaptureVideoOrientation)UIDeviceOrientationLandscapeLeft;
 
-        [rootLayer addSublayer:self.previewLayer];
+        //[rootLayer addSublayer:self.previewLayer];
         [session startRunning];
         
     }
@@ -445,7 +445,7 @@ static CGFloat DegreesToRadians(CGFloat degrees) {return degrees * M_PI / 180;};
 	// get the image
 	CVPixelBufferRef pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer);
 	CFDictionaryRef attachments = CMCopyDictionaryOfAttachments(kCFAllocatorDefault, sampleBuffer, kCMAttachmentMode_ShouldPropagate);
-	CIImage *ciImage = [[CIImage alloc] initWithCVPixelBuffer:pixelBuffer 
+	CIImage *ciImage = [[CIImage alloc] initWithCVPixelBuffer:pixelBuffer
                                                       options:(__bridge NSDictionary *)attachments];
 //    UIImage *image = [UIImage imageWithCIImage:ciImage];
     UIImage *image = [self imageFromSampleBuffer:sampleBuffer];
@@ -463,8 +463,9 @@ static CGFloat DegreesToRadians(CGFloat degrees) {return degrees * M_PI / 180;};
     
 	NSArray *features = [self.faceDetector featuresInImage:ciImage 
                                                    options:imageOptions];
+    
     for ( CIFaceFeature *ff in features ) {
-        CGRect faceRect;
+        CGRect faceRect = [ff bounds];
         int r = 0;
         faceRect = CGRectMake(faceRect.origin.x-r, image.size.height - faceRect.size.height - faceRect.origin.y-r , faceRect.size.width+2*r, faceRect.size.height+2*r);
 
@@ -495,17 +496,7 @@ static CGFloat DegreesToRadians(CGFloat degrees) {return degrees * M_PI / 180;};
     }
 
 	
-    // get the clean aperture
-    // the clean aperture is a rectangle that defines the portion of the encoded pixel dimensions
-    // that represents image data valid for display.
-	CMFormatDescriptionRef fdesc = CMSampleBufferGetFormatDescription(sampleBuffer);
-	CGRect cleanAperture = CMVideoFormatDescriptionGetCleanAperture(fdesc, false /*originIsTopLeft == false*/);
-	
-	dispatch_async(dispatch_get_main_queue(), ^(void) {
-		[self drawFaces:features 
-            forVideoBox:cleanAperture 
-            orientation:curDeviceOrientation];
-	});
+
 }
 
 
