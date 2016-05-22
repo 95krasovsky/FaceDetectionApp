@@ -463,20 +463,8 @@ static CGFloat DegreesToRadians(CGFloat degrees) {return degrees * M_PI / 180;};
     
 	NSArray *features = [self.faceDetector featuresInImage:ciImage 
                                                    options:imageOptions];
-    
-
-//    dispatch_async(dispatch_get_main_queue(), ^{
-//        self.faceImageView.image = image;
-//
-//    });
-//    self.faceImageView.backgroundColor = [UIColor redColor];
-//    self.faceImageView.image = [UIImage imageNamed:@"background.png"];
     for ( CIFaceFeature *ff in features ) {
-        // find the correct position for the square layer within the previewLayer
-        // the feature box originates in the bottom left of the video frame.
-        // (Bottom right if mirroring is turned on)
-        CGRect faceRect = [ff bounds];
-//        CGRect faceRect = CGRectMake(0,0, 100, 100);
+        CGRect faceRect;
         int r = 0;
         faceRect = CGRectMake(faceRect.origin.x-r, image.size.height - faceRect.size.height - faceRect.origin.y-r , faceRect.size.width+2*r, faceRect.size.height+2*r);
 
@@ -499,14 +487,11 @@ static CGFloat DegreesToRadians(CGFloat degrees) {return degrees * M_PI / 180;};
         
         // or use the UIImage wherever you like
         UIImage *croppedImage = [UIImage imageWithCGImage:imageRef scale:1.0 orientation:imageOrientation];
-       // croppedImage.imageOrientation =
         CGImageRelease(imageRef);
-              dispatch_async(dispatch_get_main_queue(), ^{
-                    self.faceImageView.image = croppedImage;
-            
-                });
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.faceImageView.image = croppedImage;
+        });
 
-     //   self.faceImageView.image = image;
     }
 
 	
@@ -538,8 +523,6 @@ static CGFloat DegreesToRadians(CGFloat degrees) {return degrees * M_PI / 180;};
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-	// Do any additional setup after loading the view, typically from a nib.
-    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
 
     [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
     
@@ -560,35 +543,14 @@ static CGFloat DegreesToRadians(CGFloat degrees) {return degrees * M_PI / 180;};
 	self.borderImage = nil;
 }
 
-//- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-//{
-//    // We support only Portrait.
-//	return (interfaceOrientation == UIInterfaceOrientationPortrait);
+- (void)viewWillLayoutSubviews {
+    [super viewWillLayoutSubviews];
+    [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationNone];
+}
+
+//- (BOOL)prefersStatusBarHidden{
+//    return  NO;
 //}
-
-- (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator{
-    [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
-    
-    // Note that the app delegate controls the device orientation notifications required to use the device orientation.
-    UIDeviceOrientation deviceOrientation = [UIDevice currentDevice].orientation;
-//    if ( UIDeviceOrientationIsPortrait( deviceOrientation ) || UIDeviceOrientationIsLandscape( deviceOrientation ) ) {
-//        AVCaptureVideoPreviewLayer *previewLayer = (AVCaptureVideoPreviewLayer *)self.previewView.layer;
-//        self.previewLayer.connection.videoOrientation = (AVCaptureVideoOrientation)deviceOrientation;
-//        CALayer *rootLayer = [self.previewView layer];
-//        [rootLayer setMasksToBounds:YES];
-//        [self.previewLayer setFrame:[rootLayer bounds]];
-//
-//    }
-    if (UIDeviceOrientationIsLandscape(deviceOrientation)){
-        [self.navigationController setNavigationBarHidden:NO animated:YES];
-    } else{
-        [self.navigationController setNavigationBarHidden:NO animated:YES];
-    }
-
-}
-- (BOOL)prefersStatusBarHidden{
-    return  NO;
-}
 
 - (void) orientationChanged:(NSNotification *)note
 {
@@ -601,6 +563,12 @@ static CGFloat DegreesToRadians(CGFloat degrees) {return degrees * M_PI / 180;};
         [self.previewLayer setFrame:[rootLayer bounds]];
         
     }
+    if (UIDeviceOrientationIsPortrait(device.orientation )){
+        self.faceImageHeight.constant = self.previewView.frame.size.height * 0.295;
+    } else if (UIDeviceOrientationIsLandscape( device.orientation )){
+        self.faceImageHeight.constant = self.previewView.frame.size.width * 0.216;
+    }
+
 }
 
 

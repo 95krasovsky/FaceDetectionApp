@@ -14,5 +14,6 @@
 
 @property (nonatomic, weak) IBOutlet UIView *previewView;
 @property (weak, nonatomic) IBOutlet UIImageView *faceImageView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *faceImageHeight;
 
 @end
